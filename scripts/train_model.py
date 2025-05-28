@@ -32,10 +32,11 @@ labels = np.array(labels)
 
 X_train, X_test, y_train, y_test = train_test_split(data, labels, test_size=0.2)
 
+# Update the model architecture to handle the larger input size (126 features instead of 63)
 model = Sequential([
-    LSTM(64, return_sequences=True, input_shape=(data.shape[1], data.shape[2])),
-    LSTM(64),
-    Dense(64, activation='relu'),
+    LSTM(128, return_sequences=True, input_shape=(data.shape[1], data.shape[2])),
+    LSTM(128),
+    Dense(128, activation='relu'),
     Dense(len(label_map), activation='softmax')
 ])
 
